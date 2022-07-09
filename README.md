@@ -4,4 +4,6 @@
 
 # Index
 
-1. [Project initial notes ↗](docs/initial-notes.md)
+1. [Background →](docs/background.md)
+2. [Workflow →](docs/workflow.md)
+3. [Milestones Project  →](docs/milestones.md)
