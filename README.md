@@ -1,9 +1,12 @@
 # dotnet-project
 .NET project for technology and design implementation.
-- Core idea: https://youtu.be/oC483DTjRXU
+- Core idea: [The One Project to Rule Them All](https://youtu.be/oC483DTjRXU)
+- Playlist: [Projects Developers Need in Their Portfolio](https://youtube.com/playlist?list=PLsMVKf4Dj5URj28HsC0xo_mX7OFEA1oIz)
 
-# Index
+# Project Index
 
 1. [Background →](docs/background.md)
-2. [Workflow →](docs/workflow.md)
-3. [Milestones Project  →](docs/milestones.md)
+2. [Workflow and Software Development Lifecycle →](docs/workflow.md)
+3. [Software Requirements Specification (SRS) →](docs/srs.md)
+4. [Project Milestones →](docs/milestones.md)
+5. [Other Notes →](docs/other.md)

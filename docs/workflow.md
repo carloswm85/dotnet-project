@@ -1,8 +1,10 @@
 [← Return](../README.md)
 
-# Workflow
+# Workflow and Development
 
-## Readings: Software/Web Development Life Cycle
+## READINGS: Software/Web Development Life Cycle
+
+- [Google it ↗](https://www.google.com/search?q=software+development+life+cycle)
 
 ### Online
 1. [betterprogramming.pub ↗](https://betterprogramming.pub/the-web-development-life-cycle-e7e2fd80fc55)
@@ -18,13 +20,14 @@
 8. [Software Development Life Cycle AGILE vs Traditional Approaches →](../assets/pdf/SoftwareDevelopmentLifeCycleAGILEvsTraditionalApproaches.pdf)
 9. [Software Engineering: Web Development Life Cycle →](../assets/pdf/software-engineeringweb-development-life-cycle-IJERTV2IS3438.pdf)
 
-## Research
+## LIFE CYCLE
+### Research
 - Problem Statement
 - Research and Analysis
 - Strategy and Planning (what technologies, whose roles)
 - Design and Development
 
-## Development
+### Development
 - Database Design
 - Web Design
 - Architecture Design
@@ -32,5 +35,5 @@
 - Testing and Quality Assurance
 - Deployment and Maintenance
 
-## Other
+### Other
 - Mobile-First, Responsive Web Design
