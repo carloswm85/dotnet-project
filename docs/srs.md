@@ -28,9 +28,5 @@
 3. Use the "Bug/Issue Tracker" project to track the progress I am doing in the project.
 4. Show in the interview the bug tracker with the progress I made while building it. This is next level.
 
-## IMPLEMENT
-### Features
-- [ ] Login Page
-- [ ] Notifications
-- [ ] Collection of items
-- [ ] Attachments
+## IMPLEMENTATION
+See [Project Milestones →](../docs/milestones.md)
