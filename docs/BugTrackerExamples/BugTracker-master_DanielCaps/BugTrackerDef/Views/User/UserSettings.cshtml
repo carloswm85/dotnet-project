@@ -1,0 +1,49 @@
+﻿@model BugTrackerDef.Domain.Employee
+@{
+    ViewData["Title"] = "UserSettings";
+    Layout = "~/Views/User/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h4>User Settings</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-5">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+                    <dd class="col-sm-7">
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+                    <dt class="col-sm-5">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+                    <dd class="col-sm-7">
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+                    <dt class="col-sm-5">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd class="col-sm-7">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt class="col-sm-5">
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+                    <dd class="col-sm-7">
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+                </dl>
+                <a asp-controller="User" asp-action="EditUserSettings" asp-route-id="@Model.EmployeeID">Edit User</a>
+                <br />
+                <a asp-controller="Auth" asp-action="ChangeUserPassword">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+

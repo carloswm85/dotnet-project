@@ -1,0 +1,18 @@
+<h1 id="tableLabel">Projects</h1>
+
+<p *ngIf="!projects"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="projects">
+  <thead>
+    <tr>
+      <th width="50">Image</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projects">
+      <td width="50">{{ project.image }}</td>
+      <td>{{ project.title }}</td>
+    </tr>
+  </tbody>
+</table>

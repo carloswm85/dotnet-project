@@ -1,0 +1,15 @@
+﻿@model BugTrackerDef.Models.AuthModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="box">
+    <h1>Login</h1>
+    <form asp-controller="Auth" asp-action="Login">
+
+        <input type="text" placeholder="UserName" asp-for="UserName" />
+        <input type="password" placeholder="Password" asp-for="Password" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <button type="submit" class="btn btn-primary" value="Login">Login</button>
+    </form>
+</div>

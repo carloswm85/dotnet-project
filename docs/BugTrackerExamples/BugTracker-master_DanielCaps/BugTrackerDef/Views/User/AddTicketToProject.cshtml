@@ -1,0 +1,74 @@
+﻿@model BugTrackerDef.Models.ViewModels.TicketViewModel
+@{
+    ViewData["Title"] = "AddTicketToProject";
+    Layout = "~/Views/User/_UserLayout.cshtml";
+    var projId = ViewData["ProjectId"];
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">Create Ticket</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddTicketToProject" asp-route-projId="@projId" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Project_ID" />
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"
+                                  placeholder="Enter Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AssignedDev" class="control-label"></label>
+                        <select class="form-control" asp-for="AssignedDev">
+                            @foreach (var user in Model.Employees)
+                            {
+                                <option>@user.UserName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="AssignedDev" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TicketPriority" class="control-label"></label>
+                        <select class="form-control" asp-for="TicketPriority">
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                            <option>Urgent</option>
+                        </select>
+                        <span asp-validation-for="TicketPriority" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TicketStatus" class="control-label"></label>
+                        <select class="form-control" asp-for="TicketStatus">
+                            <option>InDevelopment</option>
+                            <option>Required</option>
+                            <option>Accepted</option>
+                            <option>Finished</option>
+                        </select>
+                        <span asp-validation-for="TicketStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TicketType" class="control-label"></label>
+                        <input asp-for="TicketType" class="form-control" />
+                        <span asp-validation-for="TicketType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label>
+                        <br />
+                        <input asp-for="Image"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+<div>
+    <a asp-action="DetailsProject" asp-route-id="@projId">Cancel</a>
+</div>

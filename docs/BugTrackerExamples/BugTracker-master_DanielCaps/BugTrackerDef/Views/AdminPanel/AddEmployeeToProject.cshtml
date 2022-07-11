@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BugTrackerDef.Domain.Employee>
+@{
+    ViewData["Title"] = "AddEmployeeToProject";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var projectId = ViewData["ProjectID"];
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.UserName</td>
+                <td>
+                    <form asp-controller="AdminPanel" asp-action="AddEmployeeToProject" asp-route-emplId="@e.EmployeeID"
+                          asp-route-projId="@projectId">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="DetailsProject" asp-route-id="@projectId">Cancel</a>
+</div>
+

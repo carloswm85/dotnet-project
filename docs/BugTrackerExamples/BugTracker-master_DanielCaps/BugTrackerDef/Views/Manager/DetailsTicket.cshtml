@@ -1,0 +1,128 @@
+﻿@model BugTrackerDef.Domain.Ticket
+@{
+    ViewData["Title"] = "DetailsTicket";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+    var isOwner = ViewData["isOwner"];
+    var employeeId = ViewData["EmployeeID"];
+}
+
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-header">
+            <h3 class="card-title">@Model.Description</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AssignedDev)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.AssignedDev)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Submitter)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Submitter)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProjectName)
+                        </dt>
+                        <dd>
+                            <a asp-action="DetailsProject" asp-controller="Manager" asp-route-id="@Model.Project_ID">Project: @Model.ProjectName</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-sm-6">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketPriority)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketPriority)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketStatus)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketStatus)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketType)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketType)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.UpdatedDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.UpdatedDate)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+                @if ((string)isOwner == "true")
+                {
+                    @Html.ActionLink("Edit", "EditTicket", new { id = Model.TicketID }) @:|
+                    @Html.ActionLink("Detele", "DeleteTicket", new { id = Model.TicketID })
+                    <br />
+                }
+        </div>
+    </div>
+</div>
+<div>
+    @if (!String.IsNullOrEmpty(Model.Image))
+    {
+        var image_path = $"/content/tickets/{Model.Image}";
+        <img style="width:100%; height:auto" src="@image_path" />
+    }
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Comments</h4>
+            </div>
+            <div class="card-body">
+                <partial name="_AddCommentToTicket" model="new BugTrackerDef.Domain.Comment() { TicketID = Model.TicketID }" />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Comment</th>
+                            <th>TimeStamp</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var comment in Model.Comments)
+                        {
+                            <tr>
+                                <td>@comment.EmployeeName</td>
+                                <td>@comment.Text</td>
+                                <td>@comment.TimeStamp</td>
+                                <td>
+                                    @if ((int)employeeId == comment.EmployeeID || (string)isOwner == "true")
+                                    {
+                                        <a asp-action="DeleteComment" asp-route-id="@comment.CommentId">Delete</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@model BugTrackerDef.Domain.Project
+
+@{
+    ViewData["Title"] = "DetailsProject";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@Model.Name</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt class="col-sm-4">
+                            Creator Name
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.CreatorName)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Team</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var e in Model.EmployeeProjects)
+                            {
+                                <tr>
+                                    <td><a asp-controller="AdminPanel" asp-action="DetailsEmployee" asp-route-id="@e.EmployeeId">@e.Employee.UserName</a></td>
+                                    <td>@e.Employee.Email</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a asp-controller="AdminPanel" asp-action="AddEmployeeToProject" asp-route-id="@Model.ProjectID">AddEmployee</a>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:10px">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tickets</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Submitter</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var t in Model.Tickets)
+                            {
+                                <tr>
+                                    <td><a asp-controller="AdminPanel" asp-action="DetailsTicket" asp-route-id="@t.TicketID">@t.Description</a></td>
+                                    <td>@t.Submitter</td>
+                                    <td>@t.TicketPriority</td>
+                                    <td>@t.TicketStatus</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a asp-controller="AdminPanel" asp-action="AddTicketToProject" asp-route-id="@Model.ProjectID">Add Ticket</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="GetAllProjects">Back</a>
+</div>

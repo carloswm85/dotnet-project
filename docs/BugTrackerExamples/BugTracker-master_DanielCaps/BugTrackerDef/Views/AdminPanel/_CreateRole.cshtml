@@ -1,0 +1,11 @@
+﻿@model BugTrackerDef.Models.RoleViewModels.RoleViewModel
+
+@{ }
+
+<div>
+    <form asp-controller="AdminPanel" asp-action="CreateRole" method="post">
+        <label>Create new Role</label>
+        <input asp-for="Name" />
+        <input type="submit" value="Create" />
+    </form>
+</div>

@@ -1,0 +1,88 @@
+﻿@model BugTrackerDef.Domain.Ticket
+
+@{
+    ViewData["Title"] = "DetailsTicket";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+
+}
+
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-header">
+            <h3 class="card-title">@Model.Description</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AssignedDev)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.AssignedDev)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Submitter)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Submitter)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProjectName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ProjectName)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-sm-6">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketPriority)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketPriority)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketStatus)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketStatus)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketType)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketType)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.UpdatedDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.UpdatedDate)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @if (!String.IsNullOrEmpty(Model.Image))
+    {
+        var image_path = $"/content/tickets/{Model.Image}";
+        <img style="width:100%; height:auto" src="@image_path" />
+    }
+</div>
+<div>
+        @Html.ActionLink("Edit", "EditTicket", new { id = Model.TicketID }) |
+        @Html.ActionLink("Detele", "DeleteTicket", new { id = Model.TicketID })
+        <br />
+    <a asp-action="DetailsProject" asp-controller="AdminPanel" asp-route-id="@Model.Project_ID">Project: @Model.ProjectName</a>
+</div>

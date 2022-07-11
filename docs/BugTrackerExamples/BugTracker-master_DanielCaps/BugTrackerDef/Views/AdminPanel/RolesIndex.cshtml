@@ -1,0 +1,24 @@
+﻿@model BugTrackerDef.Models.RoleViewModels.DisplayViewModel
+@{
+    ViewData["Title"] = "GetAllRoles";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+}
+
+<h1>Roles</h1>
+
+<div>
+    <div>
+        <ul>
+            @foreach (var role in Model.Roles)
+            {
+                <li>
+                    @role
+                </li>
+            }
+        </ul>
+    </div>
+    <partial name="_CreateRole" model="new BugTrackerDef.Models.RoleViewModels.RoleViewModel()">
+</div>
+<div>
+    <partial name="_AddUserToRole" model="new BugTrackerDef.Models.RoleViewModels.UpdateUserRoleViewModel() { Users = Model.Users, Roles = Model.Roles }">
+</div>

@@ -1,0 +1,49 @@
+﻿@model BugTrackerDef.Domain.Employee
+@{
+    ViewData["Title"] = "DetailsEmployee";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+}
+
+<div>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+    </dl>
+
+    <a asp-controller="Manager" asp-action="EditEmployee" asp-route-id="@Model.EmployeeID">Edit User Settings</a>
+    <br />
+    <a asp-controller="Auth" asp-action="ChangeUserPassword">Change Password</a>
+</div>
+<div>
+    <h3>Projects</h3>
+    @foreach (var proj in Model.EmployeeProjects)
+    {
+        <a asp-controller="Manager" asp-action="DetailsProject" asp-route-id="@proj.Project.ProjectID">@proj.Project.Name</a>
+        <br />
+    }
+</div>
+
